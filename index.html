@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出行进行时——热门售卖速报 第202605期</title>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+
+  /* ========== 容器 ========== */
+  .container { max-width: 1100px; margin: 30px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.10); }
+
+  /* ========== HERO ========== */
+  .hero { background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #1a73e8 100%); color: #fff; padding: 48px 48px 56px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,0.04); }
+  .hero::after { content:''; position:absolute; bottom:-80px; left:-40px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.03); }
+  .hero-car { position:absolute; bottom:0; opacity:0.08; }
+  .hero-car-left { left:20px; }
+  .hero-car-right { right:20px; transform:scaleX(-1); }
+  .hero-road { position:absolute; bottom:0; left:0; width:100%; height:4px; background:repeating-linear-gradient(90deg,#fff 0,#fff 30px,transparent 30px,transparent 50px); opacity:0.2; }
+  .hero-badge { display:inline-block; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25); border-radius:20px; padding:4px 18px; font-size:13px; letter-spacing:1px; margin-bottom:16px; position:relative; z-index:1; }
+  .hero h1 { font-size:32px; font-weight:800; letter-spacing:2px; position:relative; z-index:1; }
+  .hero .period { font-size:18px; margin-top:10px; opacity:0.8; position:relative; z-index:1; letter-spacing:1px; }
+
+  /* ========== 章节通用 ========== */
+  .section { padding: 36px 44px; }
+  .section + .section { border-top: 1px solid #e8e8e8; }
+  .section-head { display:flex; align-items:center; margin-bottom:24px; }
+  .section-num { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#1a73e8,#0d47a1); color:#fff; font-size:18px; font-weight:800; margin-right:14px; flex-shrink:0; }
+  .section-head h2 { font-size:22px; font-weight:700; color:#111; }
+
+  /* ========== 板块1：热卖产品卡片 ========== */
+  .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .product-card { background:#f8fafc; border-radius:12px; padding:20px 22px; border:1px solid #e2e8f0; position:relative; transition: box-shadow 0.2s; }
+  .product-card:hover { box-shadow:0 4px 20px rgba(26,115,232,0.12); }
+  .product-card.biz-card { grid-column:1/-1; background:linear-gradient(135deg,#e8f0fe,#f0f6ff); border-color:#c5d8f1; }
+  .product-biz-tag { display:inline-block; background:#1a73e8; color:#fff; border-radius:6px; padding:3px 12px; font-size:13px; font-weight:600; margin-bottom:10px; }
+  .product-name { font-size:16px; font-weight:700; color:#111; margin-bottom:8px; }
+  .product-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:5px; padding:3px 10px; font-size:12px; font-weight:600; }
+  .product-link { display:block; color:#1a73e8; text-decoration:none; font-size:13px; word-break:break-all; }
+  .product-link:hover { text-decoration:underline; }
+  .product-pw { display:inline-block; background:#fff8e1; color:#e65100; font-family:monospace; padding:3px 10px; border-radius:5px; font-size:13px; letter-spacing:1px; margin-top:6px; font-weight:700; }
+  .product-target { font-size:13px; color:#555; margin-top:8px; }
+  .product-target span { color:#1a73e8; font-weight:600; }
+
+  /* ========== 板块2：突破榜 ========== */
+  .breakthrough-list { display:flex; flex-direction:column; gap:14px; }
+  .bt-card { display:flex; align-items:stretch; background:#f8fafc; border-radius:12px; overflow:hidden; border:1px solid #e2e8f0; }
+  .bt-level { display:flex; align-items:center; justify-content:center; width:110px; flex-shrink:0; font-size:14px; font-weight:700; color:#fff; }
+  .bt-level.lv-1 { background:linear-gradient(135deg,#e53935,#c62828); }
+  .bt-level.lv-2 { background:linear-gradient(135deg,#fb8c00,#e65100); }
+  .bt-body { padding:16px 22px; flex:1; }
+  .bt-project { font-size:16px; font-weight:700; color:#111; margin-bottom:4px; }
+  .bt-meta { display:flex; gap:20px; font-size:13px; color:#666; }
+  .bt-meta .val { color:#1a73e8; font-weight:600; }
+  .bt-meaning { font-size:13px; color:#333; margin-top:8px; padding:6px 12px; background:#e8f0fe; border-radius:6px; }
+
+  /* ========== 板块3：培训 ========== */
+  .training-section { margin-bottom:22px; }
+  .training-section:last-child { margin-bottom:0; }
+  .training-label { display:inline-block; font-size:14px; font-weight:700; color:#1a73e8; margin-bottom:10px; padding:4px 14px; background:#e8f0fe; border-radius:6px; }
+  .training-card { display:flex; align-items:center; background:#f8fafc; border-radius:10px; padding:14px 20px; border:1px solid #e2e8f0; gap:20px; }
+  .training-card + .training-card { margin-top:10px; }
+  .training-date { display:inline-block; background:#e65100; color:#fff; border-radius:5px; padding:2px 8px; font-size:12px; font-weight:700; flex-shrink:0; }
+  .training-title { font-size:15px; font-weight:700; color:#111; flex:1; }
+  .training-team { font-size:13px; color:#666; flex-shrink:0; }
+  .training-audience { font-size:12px; color:#1a73e8; background:#e8f0fe; border-radius:4px; padding:2px 10px; flex-shrink:0; font-weight:600; }
+
+  /* ========== 板块4：产品动态 ========== */
+  .dynamic-list { display:flex; flex-direction:column; gap:12px; }
+  .dynamic-card { display:flex; align-items:flex-start; background:#f8fafc; border-radius:10px; padding:14px 20px; border:1px solid #e2e8f0; gap:16px; }
+  .dynamic-type { flex-shrink:0; padding:4px 12px; border-radius:6px; font-size:13px; font-weight:700; }
+  .dynamic-type.t-stop { background:#fce4ec; color:#c62828; }
+  .dynamic-type.t-sale { background:#ffebee; color:#c62828; }
+  .dynamic-type.t-update { background:#fff3e0; color:#e65100; }
+  .dynamic-body { flex:1; }
+  .dynamic-product { font-size:15px; font-weight:700; color:#111; margin-bottom:4px; }
+  .dynamic-desc { font-size:13px; color:#555; line-height:1.7; }
+  .dynamic-desc a { color:#1a73e8; text-decoration:none; }
+  .dynamic-desc a:hover { text-decoration:underline; }
+
+  /* ========== 板块5：行业趋势 ========== */
+  .trend-card { background:#f8fafc; border-radius:14px; padding:24px 28px; border:1px solid #e2e8f0; border-left:5px solid #1a73e8; }
+  .trend-card + .trend-card { margin-top:16px; }
+  .trend-title { font-size:17px; font-weight:700; color:#1a73e8; margin-bottom:10px; }
+  .trend-body { font-size:14px; color:#333; line-height:1.9; text-align:justify; margin-bottom:10px; }
+  .trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .trend-tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:5px; padding:3px 10px; font-size:12px; font-weight:600; }
+  .trend-tag.green { background:#e8f5e9; color:#2e7d32; }
+
+  /* ========== 底栏 ========== */
+  .footer { text-align:center; padding:22px; color:#aaa; font-size:13px; background:#f0f2f5; border-radius:0 0 16px 16px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="hero-car hero-car-left">
+      <svg width="140" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#fff">
+          <path d="M20,57 Q20,47 34,47 L42,34 Q45,30 52,30 L82,30 Q90,30 94,38 L104,47 Q114,47 114,57 L114,61 Q114,66 108,66 L104,66 L104,59 Q104,56 101,56 L97,56 L97,66 L26,66 L26,59 Q26,56 23,56 L19,56 L19,66 L13,66 Q8,66 8,61 L8,59 Q8,56 13,57Z" />
+          <circle cx="36" cy="66" r="5" fill="#0d47a1"/><circle cx="36" cy="66" r="2.5" fill="#fff"/>
+          <circle cx="95" cy="66" r="5" fill="#0d47a1"/><circle cx="95" cy="66" r="2.5" fill="#fff"/>
+          <rect x="108" y="52" width="6" height="5" rx="1" fill="#ffe082" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-car hero-car-right">
+      <svg width="140" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#fff">
+          <path d="M20,57 Q20,47 34,47 L42,34 Q45,30 52,30 L82,30 Q90,30 94,38 L104,47 Q114,47 114,57 L114,61 Q114,66 108,66 L104,66 L104,59 Q104,56 101,56 L97,56 L97,66 L26,66 L26,59 Q26,56 23,56 L19,56 L19,66 L13,66 Q8,66 8,61 L8,59 Q8,56 13,57Z" />
+          <circle cx="36" cy="66" r="5" fill="#0d47a1"/><circle cx="36" cy="66" r="2.5" fill="#fff"/>
+          <circle cx="95" cy="66" r="5" fill="#0d47a1"/><circle cx="95" cy="66" r="2.5" fill="#fff"/>
+          <rect x="108" y="52" width="6" height="5" rx="1" fill="#ffe082" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-road"></div>
+    <div class="hero-badge">内部资料 · 腾讯出行</div>
+    <h1>出行进行时</h1>
+    <div class="hero-sub" style="font-size:20px; margin-top:6px; opacity:0.9; position:relative; z-index:1; font-weight:600;">热门售卖速报</div>
+    <div class="period">第 202605 期</div>
+  </div>
+
+
+  <!-- ===== 1. 本期热卖产品 ===== -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">1</div>
+      <h2>本期热卖产品</h2>
+    </div>
+
+    <!-- 公有云-AI 组 -->
+    <div class="product-card biz-card" style="margin-bottom:16px;">
+      <div class="product-biz-tag">公有云 - AI</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+          <div class="product-name">Agent Portal：智能体统一门户</div>
+          <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
+          <a class="product-link" href="https://meeting.tencent.com/crm/KDOGEwr754" target="_blank">https://meeting.tencent.com/crm/KDOGEwr754</a>
+          <div><span class="product-pw">密码：8FD8</span></div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+          <div class="product-name">Token hub</div>
+          <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
+          <a class="product-link" href="https://meeting.tencent.com/crm/2VjE6gDx14" target="_blank">https://meeting.tencent.com/crm/2VjE6gDx14</a>
+          <div><span class="product-pw">密码：HEMS</span></div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+          <div class="product-name">Workbuddy &amp; Codebuddy</div>
+          <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
+          <a class="product-link" href="https://meeting.tencent.com/crm/l5w3MGyD57" target="_blank">https://meeting.tencent.com/crm/l5w3MGyD57</a>
+          <div><span class="product-pw">密码：PW4T</span></div>
+        </div>
+        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+          <div class="product-name">Databuddy</div>
+          <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
+          <a class="product-link" href="https://meeting.tencent.com/crm/2qkPQzVZ6a" target="_blank">https://meeting.tencent.com/crm/2qkPQzVZ6a</a>
+          <div><span class="product-pw">密码：4XNE</span></div>
+        </div>
+      </div>
+      <div class="product-target" style="margin-top:12px;"><span>建议关注：所有客户</span></div>
+    </div>
+
+    <!-- 座舱 -->
+    <div class="product-card" style="margin-bottom:16px;">
+      <div class="product-biz-tag" style="background:#6a1b9a;">座舱</div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex:1;">
+          <div class="product-name">Masteragent + 生态智能体</div>
+          <div class="product-tags"><span class="tag" style="background:#f3e5f5;color:#6a1b9a;">AI赋能</span><span class="tag" style="background:#f3e5f5;color:#6a1b9a;">独家信源</span><span class="tag" style="background:#f3e5f5;color:#6a1b9a;">按量收费</span></div>
+          <div class="product-target"><span>建议关注：自主/国际/新势力车企</span></div>
+        </div>
+        <div style="flex:1; text-align:right;">
+          <a class="product-link" href="https://meeting.tencent.com/crm/KnwP8yGjb2" target="_blank">https://meeting.tencent.com/crm/KnwP8yGjb2</a>
+          <div><span class="product-pw">密码：DCJG</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 合规云 -->
+    <div class="product-card">
+      <div class="product-biz-tag" style="background:#2e7d32;">合规云</div>
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div style="flex:1;">
+          <div class="product-name">自动驾驶合规云解决方案</div>
+          <div class="product-tags"><span class="tag" style="background:#e8f5e9;color:#2e7d32;">快速转化</span></div>
+          <div class="product-target"><span>建议关注：自动驾驶数据处理相关车企及Tier1</span></div>
+        </div>
+        <div style="flex:1; text-align:right;">
+          <a class="product-link" href="https://meeting.tencent.com/crm/KejrZ63200" target="_blank">https://meeting.tencent.com/crm/KejrZ63200</a>
+          <div><span class="product-pw">密码：STMS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== 2. 本期商业突破榜 ===== -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">2</div>
+      <h2>本期商业突破榜</h2>
+    </div>
+    <div class="breakthrough-list">
+      <div class="bt-card">
+        <div class="bt-level lv-1">定点_千万级</div>
+        <div class="bt-body">
+          <div class="bt-project">2026年-比亚迪线上欧洲智驾云项目</div>
+          <div class="bt-meta"><span>方案：<span class="val">自主-公有云-智驾云</span></span></div>
+          <div class="bt-meaning">🎯 海外智驾项目首单</div>
+        </div>
+      </div>
+      <div class="bt-card">
+        <div class="bt-level lv-2">定点_百万级</div>
+        <div class="bt-body">
+          <div class="bt-project">魏桥汽车研究院车上智能体</div>
+          <div class="bt-meta"><span>方案：<span class="val">自主-座舱-大模型</span></span></div>
+          <div class="bt-meaning">🎯 API Agent方案扩展</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== 3. 本月精选培训 ===== -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">3</div>
+      <h2>本月精选培训</h2>
+    </div>
+
+    <div class="training-section">
+      <div class="training-label">📢 培训预告</div>
+      <div class="training-card" style="flex-direction:column; align-items:flex-start; gap:8px;">
+        <div style="display:flex; align-items:center; gap:12px; width:100%;">
+          <span class="training-date">6/17</span>
+          <div class="training-title" style="flex:1;">AI原子能力-语音asr/tts和智创多模态能力产品培训</div>
+          <div class="training-audience" style="flex-shrink:0;">架构师必修</div>
+        </div>
+        <div style="font-size:13px; color:#444; line-height:1.7; padding-left:42px;">📌 培训焦点：语音技术新功能和案例介绍；智创产品矩阵、第三方合作产品售卖指南</div>
+        <div style="font-size:12px; color:#888; padding-left:42px;">🏫 培训团队：云产品三部/应用产品一中心</div>
+      </div>
+    </div>
+
+    <div class="training-section">
+      <div class="training-label">📋 培训回顾</div>
+      <div class="training-card">
+        <div class="training-title" style="flex:none; width:28%;">腾讯会议2026年新报价政策，WorkBuddy+腾讯会议</div>
+        <div class="training-team" style="width:22%;">腾讯会议产品部</div>
+        <div class="training-audience">商务必修</div>
+        <div style="font-size:12px; color:#666; flex:1;">腾会最新报价政策、与WorkBuddy融合功能、广汽案例</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title" style="flex:none; width:28%;">ADP 新规划介绍</div>
+        <div class="training-team" style="width:22%;">云产品三部</div>
+        <div class="training-audience">商务/架构师必修</div>
+        <div style="font-size:12px; color:#666; flex:1;">ADP最新升级亮点与激励政策，出行案例分享</div>
+      </div>
+      <div class="training-card">
+        <div class="training-title" style="flex:none; width:28%;">DataBuddy培训</div>
+        <div class="training-team" style="width:22%;">云产品二部</div>
+        <div class="training-audience">所有铁三角必修</div>
+        <div style="font-size:12px; color:#666; flex:1;">AI时代DataBuddy核心亮点与差异化优势</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== 4. 产品动态 ===== -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">4</div>
+      <h2>产品动态</h2>
+    </div>
+    <div class="dynamic-list">
+      <div class="dynamic-card">
+        <div class="dynamic-type t-stop">退市</div>
+        <div class="dynamic-body">
+          <div class="dynamic-product">腾讯微卡 / 腾讯微卡云官网版</div>
+          <div class="dynamic-desc">产品停止售卖，官网将下线新购页面，但已签约合同在有效期内仍可正常交付及运维 <a href="https://csig.lexiangla.com/teams/k100836/docs/a74d2b3e5a4011f1ab186294028411cb" target="_blank">[查看详情]</a></div>
+        </div>
+      </div>
+      <div class="dynamic-card">
+        <div class="dynamic-type t-stop">退市</div>
+        <div class="dynamic-body">
+          <div class="dynamic-product">云安全中心 / 云安全服务 &amp; 云安全防护验证服务</div>
+          <div class="dynamic-desc">2026年5月28日后停止售卖，但已签约合同在有效期内仍可正常交付及运维 <a href="https://csig.lexiangla.com/teams/k100836/docs/f89111125b3b11f1a8f98a1f8b0bb692" target="_blank">[查看详情]</a></div>
+        </div>
+      </div>
+      <div class="dynamic-card">
+        <div class="dynamic-type t-sale">停售</div>
+        <div class="dynamic-body">
+          <div class="dynamic-product">Cloud Mate</div>
+          <div class="dynamic-desc">2026年08月31日后停止售卖，不再接入新客户；存量用户可迁移至日志服务 CLS，CLS 团队提供 1对1 迁移服务 <a href="https://csig.lexiangla.com/teams/k100836/docs/6e9f1614647511f1be9c9aac078885cf" target="_blank">[查看详情]</a></div>
+        </div>
+      </div>
+      <div class="dynamic-card">
+        <div class="dynamic-type t-update">更新</div>
+        <div class="dynamic-body">
+          <div class="dynamic-product">消息队列 TDMQ RabbitMQ</div>
+          <div class="dynamic-desc">全新推出托管版 4.2，当前开放白名单使用，如有需求请联系接口同学 <a href="https://csig.lexiangla.com/teams/k100013/docs/6d967234649e11f1a0b7e69e7aa1f12e" target="_blank">[查看详情]</a></div>
+        </div>
+      </div>
+      <div class="dynamic-card">
+        <div class="dynamic-type t-update">更新</div>
+        <div class="dynamic-body">
+          <div class="dynamic-product">TDSQL-C MySQL</div>
+          <div class="dynamic-desc">备份文件保留服务将于2026年7月1日 15:00 开始商业化计费 <a href="https://csig.lexiangla.com/teams/k100836/docs/c0f8d528658111f19215161eff3d320d" target="_blank">[查看详情]</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== 5. 行业趋势洞察 ===== -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">5</div>
+      <h2>行业趋势洞察</h2>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🚗 比亚迪全民智驾 2.0 正式落地，行业首创城市NOA安全兜底</div>
+      <div class="trend-body">2026年5月28日，比亚迪在深圳"敢为"智能化战略发布会推出全民智驾2.0，搭配国内首款量产4nm车规智驾芯片璇玑A3，从价格、安全、技术三大维度推动高阶城市领航全面普惠。全民智驾2.0打破高端智驾溢价壁垒，全系车型均可选装天神之眼B激光智驾包，定价12000元，7万级海鸥等入门车型同步适配，智驾功能终身免费无订阅费。系统搭载无图城市NOA、全场景记忆泊车，依托璇玑A3芯片提供2100TOPS整车算力，自研物理AI大模型预判道路风险，复杂城市路口通行更稳健。行业首创城市领航一年安全兜底政策：新车主提车、老车主OTA升级天神之眼5.0后，合规使用城市NOA引发有责事故，比亚迪全额赔付车辆、第三方财产与人伤损失，赔付无上限且不影响车主次年车险保费。叠加此前智能泊车兜底，比亚迪实现泊车、城市领航双安全保障，大幅打消用户使用顾虑。</div>
+      <div class="trend-tags">
+        <span class="trend-tag">智能驾驶云和图方案</span>
+        <span class="trend-tag green">推进智驾平权的车企</span>
+      </div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🚙 铂智3X累计销量破10万，全系搭载腾讯座舱AI智能体方案</div>
+      <div class="trend-body">5月26日，广汽丰田正式公布铂智3X市场成绩单，该车上市14个月累计销量突破10万辆，创下合资纯电SUV最快十万台交付纪录，车型全系标配腾讯智能座舱AI智能体全套解决方案，也是合资品牌首款规模化落地座舱任务式AI的量产车型。依托腾讯轻量化微信小程序生态，数十款生活、娱乐、服务小程序零安装上车，云端实时更新，解决传统车机应用适配慢、迭代滞后痛点。核心座舱AI智能体实现全流程任务闭环，语音即可完成咖啡点单、出游路线规划、车内场景联动等操作，告别碎片化语音指令。整套座舱方案搭载多音区连续对话能力，兼顾日常通勤、短途出游、车内休憩多元场景。凭借成熟智能化体系，铂智3X连续7个月登顶合资新能源销量榜单。未来广汽丰田将联合腾讯持续通过OTA迭代扩充智能体服务与小程序生态，持续升级座舱智慧出行体验。</div>
+      <div class="trend-tags">
+        <span class="trend-tag">腾讯智能座舱AI解决方案</span>
+        <span class="trend-tag green">重视座舱体验的车企</span>
+      </div>
+    </div>
+
+    <div class="trend-card">
+      <div class="trend-title">🌐 腾讯云多款AI智能体全球发布，加速AI业务出海布局</div>
+      <div class="trend-body">5月28日，腾讯云于香港举办活动，正式推出多款面向全球的AI Agent新品，并完成Agent Runtime底座全面升级，全面推进AI业务全球化进程。本次升级后的Agent Runtime包含五大核心组件，唤醒速度、算力利用率、任务稳定性等均实现大幅提升，同时推出按量计费模式，进一步降低使用成本。同期，办公效率智能体WorkBuddy国际版正式上线，深度适配海外主流社交平台；多模态创意智能体Miora国际版开启邀测，可一站式生成图片、视频、3D等创意内容。此外，腾讯云TokenHub模型服务、腾讯电子签海外版同步亮相，电子签方案可适配全球多地合规要求。现场腾讯云还与中信银行（国际）达成三年战略合作，并落地多个海外新客户合作，依托完整 AI 产品矩阵拓展全球市场。</div>
+      <div class="trend-tags">
+        <span class="trend-tag">腾讯CodeBuddy/WorkBuddy+TokenHub</span>
+        <span class="trend-tag green">重视AI提效的企业/有出海需求的车企</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer">出行进行时——热门售卖速报 &nbsp;|&nbsp; 第202605期 &nbsp;|&nbsp; 内部资料</div>
+</div>
+</body>
+</html>
