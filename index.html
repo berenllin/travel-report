@@ -5,23 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>出行进行时——热门售卖速报 第202605期</title>
 <style>
+  @font-face {
+    font-family: 'TencentSans';
+    src: url('https://cdpf.cdn.cn/2023/02/20/TencentSans-W7.woff2') format('woff2'),
+         url('https://cdpf.cdn.cn/2023/02/20/TencentSans-W7.woff') format('woff');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'TencentSans';
+    src: url('https://cdpf.cdn.cn/2023/02/20/TencentSans-W3.woff2') format('woff2'),
+         url('https://cdpf.cdn.cn/2023/02/20/TencentSans-W3.woff') format('woff');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
   * { box-sizing: border-box; margin:0; padding:0; }
   body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
 
   /* ========== 容器 ========== */
   .container { max-width: 1100px; margin: 30px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.10); }
 
-  /* ========== HERO ========== */
-  .hero { background: linear-gradient(135deg, #0d47a1 0%, #1565c0 40%, #1a73e8 100%); color: #fff; padding: 48px 48px 56px; text-align: center; position: relative; overflow: hidden; }
-  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; border-radius:50%; background:rgba(255,255,255,0.04); }
-  .hero::after { content:''; position:absolute; bottom:-80px; left:-40px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.03); }
-  .hero-car { position:absolute; bottom:0; opacity:0.08; }
-  .hero-car-left { left:20px; }
-  .hero-car-right { right:20px; transform:scaleX(-1); }
-  .hero-road { position:absolute; bottom:0; left:0; width:100%; height:4px; background:repeating-linear-gradient(90deg,#fff 0,#fff 30px,transparent 30px,transparent 50px); opacity:0.2; }
-  .hero-badge { display:inline-block; background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.25); border-radius:20px; padding:4px 18px; font-size:13px; letter-spacing:1px; margin-bottom:16px; position:relative; z-index:1; }
-  .hero h1 { font-size:32px; font-weight:800; letter-spacing:2px; position:relative; z-index:1; }
-  .hero .period { font-size:18px; margin-top:10px; opacity:0.8; position:relative; z-index:1; letter-spacing:1px; }
+  /* ========== HERO（新头图） ========== */
+  :root {
+    --logo-top: 28px;
+    --logo-left: 59px;
+    --logo-height: 28px;
+
+    --title-top: 89px;
+    --title-left: 48px;
+    --title-font-size: 94px;
+    --title-letter-spacing: 2px;
+
+    --brush-top: 184px;
+    --brush-left: 27px;
+    --brush-padding-v: 62px;
+    --brush-padding-h: 34px;
+
+    --badge-top: 308px;
+    --badge-left: 43px;
+
+    --illus-right: 38px;
+    --illus-bottom: 25px;
+    --illus-height: 293px;
+
+    --car-left: 290px;
+    --car-bottom: 46px;
+    --car-height: 100px;
+  }
+  .hero-banner {
+    width: 100%; height: 420px;
+    background: linear-gradient(135deg, #1a5fb4 0%, #3584e4 40%, #62a0ea 70%, #99c1f1 100%);
+    position: relative; overflow: hidden;
+    font-family: 'TencentSans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  .hero-banner .bg-glow { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.18; }
+  .hero-banner .glow1 { width: 300px; height: 300px; background: #fff; top: -80px; right: 100px; }
+  .hero-banner .glow2 { width: 400px; height: 200px; background: #a78bfa; bottom: -40px; left: 300px; }
+  .hero-banner .brand { position: absolute; top: var(--logo-top); left: var(--logo-left); z-index: 3; }
+  .hero-banner .brand-img { height: var(--logo-height); width: auto; display: block; }
+  .hero-banner .main-title {
+    position: absolute; top: var(--title-top); left: var(--title-left);
+    font-size: var(--title-font-size); font-weight: 900; color: #fff;
+    letter-spacing: var(--title-letter-spacing);
+    text-shadow: 0 4px 12px rgba(0,20,80,0.5), 0 10px 30px rgba(0,20,80,0.35), 0 0 60px rgba(255,255,255,0.15);
+    line-height: 1.1;
+  }
+  .hero-banner .brush-tag {
+    position: absolute; top: var(--brush-top); left: var(--brush-left);
+    display: inline-block;
+    padding: calc(var(--brush-padding-v) + 4px) calc(var(--brush-padding-h) + 6px) calc(var(--brush-padding-v)) var(--brush-padding-h);
+    color: #fff; font-size: 32px; font-weight: 800; letter-spacing: 4px;
+    background: url('brush-bg.webp') center/100% 100% no-repeat;
+    z-index: 2;
+  }
+  .hero-banner .issue-badge {
+    position: absolute; top: var(--badge-top); left: var(--badge-left);
+    background: rgba(0,0,0,0.75); color: #fff;
+    padding: 8px 22px 10px 18px; font-size: 20px; font-weight: 600; letter-spacing: 3px;
+    border-radius: 6px; display: flex; align-items: center; gap: 12px;
+  }
+  .hero-banner .issue-badge::after { content: '▶▶'; font-size: 11px; letter-spacing: 1px; opacity: 0.9; }
+  .hero-banner .illustration {
+    position: absolute; right: var(--illus-right); bottom: var(--illus-bottom);
+    height: var(--illus-height); width: auto;
+  }
+  .hero-banner .illus-img { height: 100%; width: auto; object-fit: contain; }
+  .hero-banner .car-image {
+    position: absolute;
+    left: var(--car-left);
+    bottom: var(--car-bottom);
+    height: var(--car-height);
+    width: auto;
+    z-index: 2;
+  }
+  .hero-banner .car-img { height: 100%; width: auto; object-fit: contain; }
 
   /* ========== 章节通用 ========== */
   .section { padding: 36px 44px; }
@@ -92,40 +167,52 @@
 
   /* ========== 底栏 ========== */
   .footer { text-align:center; padding:22px; color:#aaa; font-size:13px; background:#f0f2f5; border-radius:0 0 16px 16px; }
+
+
+  /* ========== 头图调整面板 ========== */
+  #ctrl-panel {
+    position: fixed; bottom: 16px; right: 16px;
+    width: 320px; max-height: 90vh; overflow-y: auto;
+    background: rgba(15,23,42,0.95); color: #e2e8f0; display: none;
+    border-radius: 12px; padding: 16px; z-index: 9999;
+    font-family: 'PingFang SC', sans-serif; font-size: 13px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  #ctrl-panel h3 { margin: 0 0 12px; font-size: 15px; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
+  .ctrl-group { margin-bottom: 14px; }
+  .ctrl-group-title { font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600; }
+  .ctrl-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .ctrl-row label { width: 80px; font-size: 12px; color: #cbd5e1; flex-shrink: 0; }
+  .ctrl-row input[type=range] { flex: 1; accent-color: #38bdf8; }
+  .ctrl-row .val { width: 44px; text-align: right; font-size: 12px; color: #7dd3fc; font-family: monospace; }
+  #ctrl-panel::-webkit-scrollbar { width: 4px; }
+  #ctrl-panel::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+  .ctrl-btn {
+    display: inline-block; padding: 5px 12px; background: #1e293b; color: #e2e8f0;
+    border: 1px solid #334155; border-radius: 6px; cursor: pointer; font-size: 12px;
+    margin-right: 6px; margin-top: 4px;
+  }
+  .ctrl-btn:hover { background: #334155; }
+  #toggle-ctrl { position: fixed; bottom: 16px; right: 344px; z-index: 9998;
+    background: rgba(15,23,42,0.9); color: #e2e8f0; border: 1px solid #334155;
+    border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 13px;
+  }
+  
 </style>
-</head>
 <body>
-<div class="container">
-
-  <!-- ===== HERO ===== -->
-  <div class="hero">
-    <div class="hero-car hero-car-left">
-      <svg width="140" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#fff">
-          <path d="M20,57 Q20,47 34,47 L42,34 Q45,30 52,30 L82,30 Q90,30 94,38 L104,47 Q114,47 114,57 L114,61 Q114,66 108,66 L104,66 L104,59 Q104,56 101,56 L97,56 L97,66 L26,66 L26,59 Q26,56 23,56 L19,56 L19,66 L13,66 Q8,66 8,61 L8,59 Q8,56 13,57Z" />
-          <circle cx="36" cy="66" r="5" fill="#0d47a1"/><circle cx="36" cy="66" r="2.5" fill="#fff"/>
-          <circle cx="95" cy="66" r="5" fill="#0d47a1"/><circle cx="95" cy="66" r="2.5" fill="#fff"/>
-          <rect x="108" y="52" width="6" height="5" rx="1" fill="#ffe082" opacity="0.6"/>
-        </g>
-      </svg>
-    </div>
-    <div class="hero-car hero-car-right">
-      <svg width="140" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#fff">
-          <path d="M20,57 Q20,47 34,47 L42,34 Q45,30 52,30 L82,30 Q90,30 94,38 L104,47 Q114,47 114,57 L114,61 Q114,66 108,66 L104,66 L104,59 Q104,56 101,56 L97,56 L97,66 L26,66 L26,59 Q26,56 23,56 L19,56 L19,66 L13,66 Q8,66 8,61 L8,59 Q8,56 13,57Z" />
-          <circle cx="36" cy="66" r="5" fill="#0d47a1"/><circle cx="36" cy="66" r="2.5" fill="#fff"/>
-          <circle cx="95" cy="66" r="5" fill="#0d47a1"/><circle cx="95" cy="66" r="2.5" fill="#fff"/>
-          <rect x="108" y="52" width="6" height="5" rx="1" fill="#ffe082" opacity="0.6"/>
-        </g>
-      </svg>
-    </div>
-    <div class="hero-road"></div>
-    <div class="hero-badge">内部资料 · 腾讯出行</div>
-    <h1>出行进行时</h1>
-    <div class="hero-sub" style="font-size:20px; margin-top:6px; opacity:0.9; position:relative; z-index:1; font-weight:600;">热门售卖速报</div>
-    <div class="period">第 202605 期</div>
+  <div class="container">
+  <!-- 头图 -->
+  <div class="hero-banner">
+    <div class="bg-glow glow1"></div>
+    <div class="bg-glow glow2"></div>
+    <div class="brand"><img src="logo.png" class="brand-img" alt=""></div>
+    <div class="main-title">热门售卖速报</div>
+    <div class="brush-tag">出行进行时</div>
+    <div class="issue-badge">第 202605 期</div>
+    <div class="illustration"><img src="illustration.webp" class="illus-img" alt=""></div>
+    <div class="car-image"><img src="car-image.webp" class="car-img" alt=""></div>
   </div>
-
 
   <!-- ===== 1. 本期热卖产品 ===== -->
   <div class="section">
@@ -134,7 +221,6 @@
       <h2>本期热卖产品</h2>
     </div>
 
-    <!-- 公有云-AI 组 -->
     <div class="product-card biz-card" style="margin-bottom:16px;">
       <div class="product-biz-tag">公有云 - AI</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
@@ -355,5 +441,96 @@
 
   <div class="footer">出行进行时——热门售卖速报 &nbsp;|&nbsp; 第202605期 &nbsp;|&nbsp; 内部资料</div>
 </div>
+
+  <button id="toggle-ctrl" onclick="document.getElementById('ctrl-panel').style.display = document.getElementById('ctrl-panel').style.display === 'none' ? 'block' : 'none'">&#x1f39b;&#xfe0f; 调整面板</button>
+  <div id="ctrl-panel">
+    <h3>&#x2699;&#xfe0f; 头图元素调整</h3>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1f524; Logo</div>
+      <div class="ctrl-row"><label>上距</label><input type="range" min="0" max="100" value="28" oninput="updateCSS('--logo-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">28px</span></div>
+      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="59" oninput="updateCSS('--logo-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">59px</span></div>
+      <div class="ctrl-row"><label>高度</label><input type="range" min="10" max="80" value="28" oninput="updateCSS('--logo-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">28px</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1f3af; 主标题</div>
+      <div class="ctrl-row"><label>上距</label><input type="range" min="0" max="200" value="89" oninput="updateCSS('--title-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">89px</span></div>
+      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="48" oninput="updateCSS('--title-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">48px</span></div>
+      <div class="ctrl-row"><label>字号</label><input type="range" min="40" max="140" value="94" oninput="updateCSS('--title-font-size',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">94px</span></div>
+      <div class="ctrl-row"><label>字间距</label><input type="range" min="0" max="20" value="2" oninput="updateCSS('--title-letter-spacing',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">2px</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1fac6; 笔触标签</div>
+      <div class="ctrl-row"><label>上距</label><input type="range" min="100" max="350" value="184" oninput="updateCSS('--brush-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">184px</span></div>
+      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="27" oninput="updateCSS('--brush-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">27px</span></div>
+      <div class="ctrl-row"><label>纵向内边距</label><input type="range" min="20" max="120" value="62" oninput="updateCSS('--brush-padding-v',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">62px</span></div>
+      <div class="ctrl-row"><label>横向内边距</label><input type="range" min="20" max="120" value="34" oninput="updateCSS('--brush-padding-h',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">34px</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1f4e6; 期数徽章</div>
+      <div class="ctrl-row"><label>上距</label><input type="range" min="200" max="450" value="308" oninput="updateCSS('--badge-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">308px</span></div>
+      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="43" oninput="updateCSS('--badge-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">43px</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1f3a8; 科技插画</div>
+      <div class="ctrl-row"><label>右距</label><input type="range" min="0" max="200" value="38" oninput="updateCSS('--illus-right',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">38px</span></div>
+      <div class="ctrl-row"><label>下距</label><input type="range" min="-50" max="150" value="25" oninput="updateCSS('--illus-bottom',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">25px</span></div>
+      <div class="ctrl-row"><label>高度</label><input type="range" min="100" max="450" value="293" oninput="updateCSS('--illus-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">293px</span></div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-group-title">&#x1f697; 汽车图片</div>
+      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="800" value="290" oninput="updateCSS('--car-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">290px</span></div>
+      <div class="ctrl-row"><label>下距</label><input type="range" min="-50" max="150" value="46" oninput="updateCSS('--car-bottom',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">46px</span></div>
+      <div class="ctrl-row"><label>高度</label><input type="range" min="100" max="450" value="100" oninput="updateCSS('--car-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">100px</span></div>
+    </div>
+    <hr style="border:none;border-top:1px solid #334155;margin:12px 0;">
+    <span class="ctrl-btn" onclick="copyCSS()">&#x1f4cb; 复制 CSS</span>
+    <span class="ctrl-btn" onclick="resetCSS()">&#x1f504; 重置</span>
+  </div>
+<script>
+function updateCSS(varName, val) {
+  document.documentElement.style.setProperty(varName, val);
+}
+function resetCSS() {
+  const defaults = {
+    '--logo-top':'28px','--logo-left':'59px','--logo-height':'28px',
+    '--title-top':'89px','--title-left':'48px','--title-font-size':'94px','--title-letter-spacing':'2px',
+    '--brush-top':'184px','--brush-left':'27px','--brush-padding-v':'62px','--brush-padding-h':'34px',
+    '--badge-top':'308px','--badge-left':'43px',
+    '--illus-right':'38px','--illus-bottom':'25px','--illus-height':'293px',
+    '--car-left':'290px','--car-bottom':'46px','--car-height':'100px'
+  };
+  for (const [k,v] of Object.entries(defaults)) {
+    document.documentElement.style.setProperty(k, v);
+  }
+  document.querySelectorAll('#ctrl-panel input[type=range]').forEach(s => {
+    const varName = s.getAttribute('oninput').match(/'([^']+)'/)[1];
+    s.value = parseInt(defaults[varName]);
+    s.nextElementSibling.textContent = defaults[varName];
+  });
+}
+function copyCSS() {
+  const vars = [
+    '--logo-top','--logo-left','--logo-height',
+    '--title-top','--title-left','--title-font-size','--title-letter-spacing',
+    '--brush-top','--brush-left','--brush-padding-v','--brush-padding-h',
+    '--badge-top','--badge-left',
+    '--illus-right','--illus-bottom','--illus-height',
+    '--car-left','--car-bottom','--car-height'
+  ];
+  let txt = ':root {
+';
+  vars.forEach(v => {
+    const val = getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    if (val) txt += '  ' + v + ': ' + val + ';
+';
+  });
+  txt += '}';
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event.target;
+    btn.textContent = '✅ 已复制';
+    setTimeout(() => btn.textContent = '📋 复制 CSS', 1500);
+  });
+}
+</script>
 </body>
 </html>
