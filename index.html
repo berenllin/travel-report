@@ -18,40 +18,45 @@
     font-weight: 400; font-style: normal; font-display: swap;
   }
   * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+  body { font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif; background: linear-gradient(180deg, #b8d4f0 0%, #d4e4f7 25%, #e8f0fe 50%, #f0f2f5 100%); color: #333; line-height: 1.6; }
 
   /* ========== 容器 ========== */
-  .container { max-width: 1100px; margin: 30px auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.10); }
+  .container { max-width: 1100px; margin: 30px auto; background: linear-gradient(180deg, #f0f6ff 0%, #f8fbff 100%); border-radius:calc(16px * var(--pad-scale, 1)); overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.10); }
 
   /* ========== HERO（新头图） ========== */
   :root {
-    --logo-top: 28px;
-    --logo-left: 59px;
+    --font-scale: 1.21;
+    --gap-section: 0.5;
+    --gap-card: 1.3;
+    --pad-scale: 0.58;
+    --hero-h: 413px;
+    --logo-top: 24px;
+    --logo-left: 50px;
     --logo-height: 28px;
-
-    --title-top: 89px;
+    --title-top: 91px;
     --title-left: 48px;
-    --title-font-size: 94px;
+    --title-font-size: 96px;
     --title-letter-spacing: 2px;
-
     --brush-top: 184px;
     --brush-left: 27px;
     --brush-padding-v: 62px;
     --brush-padding-h: 34px;
-
     --badge-top: 308px;
     --badge-left: 43px;
-
-    --illus-right: 38px;
-    --illus-bottom: 25px;
-    --illus-height: 293px;
-
-    --car-left: 290px;
-    --car-bottom: 46px;
-    --car-height: 100px;
+    --illus-right: 13px;
+    --illus-bottom: 10px;
+    --illus-height: 302px;
+    --car-left: 255px;
+    --car-bottom: 22px;
+    --car-height: 88px;
+    --brush-font-size: 36px;
+    --badge-font-size: 15px;
+    --training-focus-size: 18px;
+    --training-team-size: 17px;
+    --training-desc-size: 15px;
   }
   .hero-banner {
-    width: 100%; height: 420px;
+    width: 100%; height: 380px;
     background: linear-gradient(135deg, #1a5fb4 0%, #3584e4 40%, #62a0ea 70%, #99c1f1 100%);
     position: relative; overflow: hidden;
     font-family: 'TencentSans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -72,17 +77,17 @@
     position: absolute; top: var(--brush-top); left: var(--brush-left);
     display: inline-block;
     padding: calc(var(--brush-padding-v) + 4px) calc(var(--brush-padding-h) + 6px) calc(var(--brush-padding-v)) var(--brush-padding-h);
-    color: #fff; font-size: 32px; font-weight: 800; letter-spacing: 4px;
+    color: #fff; font-size:var(--brush-font-size); font-weight: 800; letter-spacing: 4px;
     background: url('brush-bg.webp') center/100% 100% no-repeat;
     z-index: 2;
   }
   .hero-banner .issue-badge {
     position: absolute; top: var(--badge-top); left: var(--badge-left);
     background: rgba(0,0,0,0.75); color: #fff;
-    padding: 8px 22px 10px 18px; font-size: 20px; font-weight: 600; letter-spacing: 3px;
-    border-radius: 6px; display: flex; align-items: center; gap: 12px;
+    padding:calc(8px * var(--pad-scale, 1)) calc(22px * var(--pad-scale, 1)) calc(10px * var(--pad-scale, 1)) calc(18px * var(--pad-scale, 1)); font-size:var(--badge-font-size); font-weight: 600; letter-spacing: 3px;
+    border-radius:calc(6px * var(--pad-scale, 1)); display: flex; align-items: center; gap:calc(12px * var(--gap-card, 1));
   }
-  .hero-banner .issue-badge::after { content: '▶▶'; font-size: 11px; letter-spacing: 1px; opacity: 0.9; }
+  .hero-banner .issue-badge::after { content: '▶▶'; font-size:calc(11px * var(--font-scale, 1)); letter-spacing: 1px; opacity: 0.9; }
   .hero-banner .illustration {
     position: absolute; right: var(--illus-right); bottom: var(--illus-bottom);
     height: var(--illus-height); width: auto;
@@ -99,110 +104,244 @@
   .hero-banner .car-img { height: 100%; width: auto; object-fit: contain; }
 
   /* ========== 章节通用 ========== */
-  .section { padding: 36px 44px; }
+  .section { padding:calc(28px * var(--pad-scale, 1)) calc(36px * var(--pad-scale, 1)); }
   .section + .section { border-top: 1px solid #e8e8e8; }
-  .section-head { display:flex; align-items:center; margin-bottom:24px; }
-  .section-num { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg,#1a73e8,#0d47a1); color:#fff; font-size:18px; font-weight:800; margin-right:14px; flex-shrink:0; }
-  .section-head h2 { font-size:22px; font-weight:700; color:#111; }
+  .section-head { display:flex; align-items:center; margin-bottom:calc(18px * var(--gap-section, 1)); }
+  .section-num { display:inline-flex; align-items:center; justify-content:center; min-width:44px; height:44px; border-radius:calc(10px * var(--pad-scale, 1)); background:linear-gradient(135deg,#1a73e8,#0d47a1); color:#fff; font-size:calc(20px * var(--font-scale, 1)); font-weight:800; margin-right:calc(14px * var(--gap-card, 1)); flex-shrink:0; padding: 0 10px; }
+  .section-head h2 { font-size:calc(26px * var(--font-scale, 1)); font-weight:700; color:#111; }
 
   /* ========== 板块1：热卖产品卡片 ========== */
-  .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .product-card { background:#f8fafc; border-radius:12px; padding:20px 22px; border:1px solid #e2e8f0; position:relative; transition: box-shadow 0.2s; }
-  .product-card:hover { box-shadow:0 4px 20px rgba(26,115,232,0.12); }
+  .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:calc(12px * var(--gap-card, 1)); }
+  .product-card { background:#f8fbff; border-radius:calc(12px * var(--pad-scale, 1)); padding:calc(18px * var(--pad-scale, 1)) calc(20px * var(--pad-scale, 1)); border:1px solid #d6e4f7; position:relative; transition: box-shadow 0.2s; }
   .product-card.biz-card { grid-column:1/-1; background:linear-gradient(135deg,#e8f0fe,#f0f6ff); border-color:#c5d8f1; }
-  .product-biz-tag { display:inline-block; background:#1a73e8; color:#fff; border-radius:6px; padding:3px 12px; font-size:13px; font-weight:600; margin-bottom:10px; }
-  .product-name { font-size:16px; font-weight:700; color:#111; margin-bottom:8px; }
-  .product-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
-  .tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:5px; padding:3px 10px; font-size:12px; font-weight:600; }
-  .product-link { display:block; color:#1a73e8; text-decoration:none; font-size:13px; word-break:break-all; }
+  .product-biz-tag { display:inline-block; background:#1a73e8; color:#fff; border-radius:calc(6px * var(--pad-scale, 1)); padding:calc(4px * var(--pad-scale, 1)) calc(14px * var(--pad-scale, 1)); font-size:calc(14px * var(--font-scale, 1)); font-weight:600; margin-bottom:calc(10px * var(--gap-section, 1)); }
+  .product-name { font-size:calc(18px * var(--font-scale, 1)); font-weight:700; color:#111; margin-bottom:calc(8px * var(--gap-section, 1)); }
+  .product-tags { display:flex; flex-wrap:wrap; gap:calc(6px * var(--gap-card, 1)); margin-bottom:calc(10px * var(--gap-section, 1)); }
+  .tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:calc(5px * var(--pad-scale, 1)); padding:calc(4px * var(--pad-scale, 1)) calc(12px * var(--pad-scale, 1)); font-size:calc(13px * var(--font-scale, 1)); font-weight:600; }
+  .product-link { display:block; color:#1a73e8; text-decoration:none; font-size:calc(14px * var(--font-scale, 1)); word-break:break-all; }
   .product-link:hover { text-decoration:underline; }
-  .product-pw { display:inline-block; background:#fff8e1; color:#e65100; font-family:monospace; padding:3px 10px; border-radius:5px; font-size:13px; letter-spacing:1px; margin-top:6px; font-weight:700; }
-  .product-target { font-size:13px; color:#555; margin-top:8px; }
+  .product-pw { display:inline-block; background:#fff8e1; color:#e65100; font-family:monospace; padding:calc(4px * var(--pad-scale, 1)) calc(12px * var(--pad-scale, 1)); border-radius:calc(5px * var(--pad-scale, 1)); font-size:calc(14px * var(--font-scale, 1)); letter-spacing:1px; margin-top:calc(6px * var(--gap-section, 1)); font-weight:700; }
+  .product-target { font-size:calc(14px * var(--font-scale, 1)); color:#555; margin-top:calc(8px * var(--gap-section, 1)); }
   .product-target span { color:#1a73e8; font-weight:600; }
 
   /* ========== 板块2：突破榜 ========== */
-  .breakthrough-list { display:flex; flex-direction:column; gap:14px; }
-  .bt-card { display:flex; align-items:stretch; background:#f8fafc; border-radius:12px; overflow:hidden; border:1px solid #e2e8f0; }
-  .bt-level { display:flex; align-items:center; justify-content:center; width:110px; flex-shrink:0; font-size:14px; font-weight:700; color:#fff; }
+  .breakthrough-list { display:flex; flex-direction:column; gap:calc(10px * var(--gap-card, 1)); }
+  .bt-card { display:flex; align-items:stretch; background:#f8fbff; border-radius:calc(12px * var(--pad-scale, 1)); overflow:hidden; border:1px solid #d6e4f7; }
+  .bt-level { display:flex; align-items:center; justify-content:center; min-width:140px; flex-shrink:0; font-size:calc(16px * var(--font-scale, 1)); font-weight:700; color:#fff; white-space:nowrap; padding:0 12px; }
   .bt-level.lv-1 { background:linear-gradient(135deg,#e53935,#c62828); }
   .bt-level.lv-2 { background:linear-gradient(135deg,#fb8c00,#e65100); }
-  .bt-body { padding:16px 22px; flex:1; }
-  .bt-project { font-size:16px; font-weight:700; color:#111; margin-bottom:4px; }
-  .bt-meta { display:flex; gap:20px; font-size:13px; color:#666; }
+  .bt-body { padding:calc(14px * var(--pad-scale, 1)) calc(18px * var(--pad-scale, 1)); flex:1; }
+  .bt-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:calc(4px * var(--gap-section, 1)); }
+  .bt-project { font-size:calc(18px * var(--font-scale, 1)); font-weight:700; color:#111; }
+  .bt-meaning { display:inline-block; font-size:calc(13px * var(--font-scale, 1)); color:#1a73e8; background:#e8f0fe; border-radius:calc(4px * var(--pad-scale, 1)); padding:calc(3px * var(--pad-scale, 1)) calc(12px * var(--pad-scale, 1)); flex-shrink:0; font-weight:600; margin-left:12px; }
+  .bt-meta { display:flex; gap:calc(20px * var(--gap-card, 1)); font-size:calc(14px * var(--font-scale, 1)); color:#666; }
   .bt-meta .val { color:#1a73e8; font-weight:600; }
-  .bt-meaning { font-size:13px; color:#333; margin-top:8px; padding:6px 12px; background:#e8f0fe; border-radius:6px; }
+  .training-focus { font-size:var(--training-focus-size); color:#444; line-height:1.7; }
+  .training-team-info { font-size:var(--training-team-size); color:#888; }
+  .training-desc { font-size:var(--training-desc-size, 12px); color:#666; }
 
   /* ========== 板块3：培训 ========== */
-  .training-section { margin-bottom:22px; }
+  .training-section { margin-bottom:calc(16px * var(--gap-section, 1)); }
   .training-section:last-child { margin-bottom:0; }
-  .training-label { display:inline-block; font-size:14px; font-weight:700; color:#1a73e8; margin-bottom:10px; padding:4px 14px; background:#e8f0fe; border-radius:6px; }
-  .training-card { display:flex; align-items:center; background:#f8fafc; border-radius:10px; padding:14px 20px; border:1px solid #e2e8f0; gap:20px; }
-  .training-card + .training-card { margin-top:10px; }
-  .training-date { display:inline-block; background:#e65100; color:#fff; border-radius:5px; padding:2px 8px; font-size:12px; font-weight:700; flex-shrink:0; }
-  .training-title { font-size:15px; font-weight:700; color:#111; flex:1; }
-  .training-team { font-size:13px; color:#666; flex-shrink:0; }
-  .training-audience { font-size:12px; color:#1a73e8; background:#e8f0fe; border-radius:4px; padding:2px 10px; flex-shrink:0; font-weight:600; }
+  .training-label { display:inline-block; font-size:calc(16px * var(--font-scale, 1)); font-weight:700; color:#1a73e8; margin-bottom:calc(10px * var(--gap-section, 1)); padding:calc(5px * var(--pad-scale, 1)) calc(16px * var(--pad-scale, 1)); background:#e8f0fe; border-radius:calc(6px * var(--pad-scale, 1)); }
+  .training-card { display:flex; align-items:center; background:#f8fbff; border-radius:calc(10px * var(--pad-scale, 1)); padding:calc(12px * var(--pad-scale, 1)) calc(16px * var(--pad-scale, 1)); border:1px solid #d6e4f7; gap:calc(16px * var(--gap-card, 1)); }
+  .training-card + .training-card { margin-top:calc(8px * var(--gap-section, 1)); }
+  .training-date { display:inline-block; background:#e65100; color:#fff; border-radius:calc(5px * var(--pad-scale, 1)); padding:calc(3px * var(--pad-scale, 1)) calc(10px * var(--pad-scale, 1)); font-size:calc(13px * var(--font-scale, 1)); font-weight:700; flex-shrink:0; }
+  .training-title { font-size:calc(17px * var(--font-scale, 1)); font-weight:700; color:#111; flex:1; }
+  .training-team { font-size:calc(14px * var(--font-scale, 1)); color:#666; flex-shrink:0; }
+  .training-audience { font-size:calc(13px * var(--font-scale, 1)); color:#1a73e8; background:#e8f0fe; border-radius:calc(4px * var(--pad-scale, 1)); padding:calc(3px * var(--pad-scale, 1)) calc(12px * var(--pad-scale, 1)); flex-shrink:0; font-weight:600; }
 
   /* ========== 板块4：产品动态 ========== */
-  .dynamic-list { display:flex; flex-direction:column; gap:12px; }
-  .dynamic-card { display:flex; align-items:flex-start; background:#f8fafc; border-radius:10px; padding:14px 20px; border:1px solid #e2e8f0; gap:16px; }
-  .dynamic-type { flex-shrink:0; padding:4px 12px; border-radius:6px; font-size:13px; font-weight:700; }
+  .dynamic-list { display:flex; flex-direction:column; gap:calc(10px * var(--gap-card, 1)); }
+  .dynamic-card { display:flex; align-items:flex-start; background:#f8fbff; border-radius:calc(10px * var(--pad-scale, 1)); padding:calc(12px * var(--pad-scale, 1)) calc(16px * var(--pad-scale, 1)); border:1px solid #d6e4f7; gap:calc(14px * var(--gap-card, 1)); }
+  .dynamic-type { flex-shrink:0; padding:calc(5px * var(--pad-scale, 1)) calc(14px * var(--pad-scale, 1)); border-radius:calc(6px * var(--pad-scale, 1)); font-size:calc(14px * var(--font-scale, 1)); font-weight:700; }
   .dynamic-type.t-stop { background:#fce4ec; color:#c62828; }
   .dynamic-type.t-sale { background:#ffebee; color:#c62828; }
   .dynamic-type.t-update { background:#fff3e0; color:#e65100; }
   .dynamic-body { flex:1; }
-  .dynamic-product { font-size:15px; font-weight:700; color:#111; margin-bottom:4px; }
-  .dynamic-desc { font-size:13px; color:#555; line-height:1.7; }
+  .dynamic-product { font-size:calc(17px * var(--font-scale, 1)); font-weight:700; color:#111; margin-bottom:calc(6px * var(--gap-section, 1)); }
+  .dynamic-desc { font-size:calc(15px * var(--font-scale, 1)); color:#555; line-height:1.8; }
   .dynamic-desc a { color:#1a73e8; text-decoration:none; }
   .dynamic-desc a:hover { text-decoration:underline; }
 
   /* ========== 板块5：行业趋势 ========== */
-  .trend-card { background:#f8fafc; border-radius:14px; padding:24px 28px; border:1px solid #e2e8f0; border-left:5px solid #1a73e8; }
-  .trend-card + .trend-card { margin-top:16px; }
-  .trend-title { font-size:17px; font-weight:700; color:#1a73e8; margin-bottom:10px; }
-  .trend-body { font-size:14px; color:#333; line-height:1.9; text-align:justify; margin-bottom:10px; }
-  .trend-tags { display:flex; flex-wrap:wrap; gap:6px; }
-  .trend-tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:5px; padding:3px 10px; font-size:12px; font-weight:600; }
+  .trend-card { background:#f8fbff; border-radius:calc(14px * var(--pad-scale, 1)); padding:calc(20px * var(--pad-scale, 1)) calc(24px * var(--pad-scale, 1)); border:1px solid #d6e4f7; border-left:5px solid #1a73e8; }
+  .trend-card + .trend-card { margin-top:calc(12px * var(--gap-section, 1)); }
+  .trend-title { font-size:calc(20px * var(--font-scale, 1)); font-weight:700; color:#1a73e8; margin-bottom:calc(10px * var(--gap-section, 1)); line-height:1.5; }
+  .trend-body { font-size:calc(16px * var(--font-scale, 1)); color:#333; line-height:1.9; text-align:justify; margin-bottom:calc(10px * var(--gap-section, 1)); }
+  .trend-tags { display:flex; flex-wrap:wrap; gap:calc(8px * var(--gap-card, 1)); }
+  .trend-tag { display:inline-block; background:#e8f0fe; color:#1a73e8; border-radius:calc(5px * var(--pad-scale, 1)); padding:calc(4px * var(--pad-scale, 1)) calc(12px * var(--pad-scale, 1)); font-size:calc(13px * var(--font-scale, 1)); font-weight:600; }
   .trend-tag.green { background:#e8f5e9; color:#2e7d32; }
 
   /* ========== 底栏 ========== */
-  .footer { text-align:center; padding:22px; color:#aaa; font-size:13px; background:#f0f2f5; border-radius:0 0 16px 16px; }
+  .footer { text-align:center; padding:calc(18px * var(--pad-scale, 1)); color:#aaa; font-size:calc(14px * var(--font-scale, 1)); background:#f0f2f5; border-radius:0 0 16px 16px; }
 
 
+  /* ========== 全局调整面板 ========== */
+  #adjust-panel {
+    position: fixed;
+    top: 60px; right: 16px;
+    width: 340px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: rgba(15,23,42,0.96);
+    color: #e2e8f0;
+    border-radius:calc(14px * var(--pad-scale, 1));
+    padding: 18px 16px 14px;
+    z-index: 99999;
+    font-family: 'PingFang SC', sans-serif;
+    font-size:calc(13px * var(--font-scale, 1));
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: none;
+  }
+  #adjust-panel h3 {
+    margin: 0 0 4px;
+    font-size:calc(15px * var(--font-scale, 1));
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap:calc(6px * var(--gap-card, 1));
+  }
+  #adjust-panel .panel-subtitle {
+    font-size:calc(11px * var(--font-scale, 1));
+    color: #64748b;
+    margin-bottom:calc(14px * var(--gap-section, 1));
+  }
+  .adj-group {
+    margin-bottom:calc(14px * var(--gap-section, 1));
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .adj-group:last-child { border-bottom: none; }
+  .adj-group-title {
+    font-size:calc(12px * var(--font-scale, 1));
+    color: #94a3b8;
+    margin-bottom:calc(8px * var(--gap-section, 1));
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap:calc(4px * var(--gap-card, 1));
+  }
+  .adj-row {
+    display: flex;
+    align-items: center;
+    gap:calc(8px * var(--gap-card, 1));
+    margin-bottom:calc(6px * var(--gap-section, 1));
+  }
+  .adj-row label {
+    width: 90px;
+    font-size: 11.5px;
+    color: #cbd5e1;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .adj-row input[type=range] {
+    flex: 1;
+    accent-color: #38bdf8;
+    height: 4px;
+  }
+  .adj-row .val {
+    width: 48px;
+    text-align: right;
+    font-size:calc(11px * var(--font-scale, 1));
+    color: #7dd3fc;
+    font-family: 'SF Mono', monospace;
+  }
+  .adj-btn {
+    display: inline-flex;
+    align-items: center;
+    gap:calc(4px * var(--gap-card, 1));
+    padding:calc(6px * var(--pad-scale, 1)) calc(14px * var(--pad-scale, 1));
+    background: rgba(56,189,248,0.15);
+    color: #7dd3fc;
+    border: 1px solid rgba(56,189,248,0.3);
+    border-radius:calc(8px * var(--pad-scale, 1));
+    cursor: pointer;
+    font-size:calc(12px * var(--font-scale, 1));
+    margin-right:calc(6px * var(--gap-card, 1));
+    margin-top:calc(4px * var(--gap-section, 1));
+    transition: all 0.15s;
+  }
+  .adj-btn:hover {
+    background: rgba(56,189,248,0.25);
+  }
+  .adj-btn.danger {
+    background: rgba(239,68,68,0.15);
+    color: #fca5a5;
+    border-color: rgba(239,68,68,0.3);
+  }
+  .adj-btn.danger:hover {
+    background: rgba(239,68,68,0.25);
+  }
+  #toggle-adjust {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 100000;
+    background: rgba(15,23,42,0.9);
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    border-radius:calc(10px * var(--pad-scale, 1));
+    padding:calc(8px * var(--pad-scale, 1)) calc(14px * var(--pad-scale, 1));
+    cursor: pointer;
+    font-size:calc(13px * var(--font-scale, 1));
+    display: flex;
+    align-items: center;
+    gap:calc(6px * var(--gap-card, 1));
+    backdrop-filter: blur(8px);
+    transition: all 0.15s;
+  }
+  #toggle-adjust:hover {
+    background: rgba(30,41,59,0.95);
+    border-color: #38bdf8;
+  }
+  #adjust-panel::-webkit-scrollbar { width: 4px; }
+  #adjust-panel::-webkit-scrollbar-thumb { background: #334155; border-radius:calc(2px * var(--pad-scale, 1)); }
+
+  /* 面板打开时按钮位置调整 */
+  body.panel-open #toggle-adjust {
+    right: 370px;
+  }
 
   /* ========== 响应式设计 ========== */
   @media (max-width: 768px) {
     .container { margin: 0; border-radius: 0; }
-    .hero-banner { height: 320px; }
+    .hero-banner { height: 300px; }
     :root {
-      --title-font-size: 48px !important;
-      --brush-padding-v: 30px;
-      --brush-padding-h: 20px;
-      --illus-height: 200px;
-      --car-height: 70px;
+      --title-font-size:calc(52px * var(--font-scale, 1)) !important;
+      --brush-padding-v: 28px;
+      --brush-padding-h: 18px;
+      --illus-height: 180px;
+      --car-height: 60px;
     }
-    .section { padding: 24px 20px; }
-    .section-head h2 { font-size: 18px; }
+    .section { padding:calc(22px * var(--pad-scale, 1)) calc(18px * var(--pad-scale, 1)); }
+    .section-head h2 { font-size:calc(22px * var(--font-scale, 1)); }
+    .section-num { min-width: 40px; height: 40px; font-size:calc(18px * var(--font-scale, 1)); }
     .product-grid { grid-template-columns: 1fr; }
     .product-card.biz-card > div { grid-template-columns: 1fr; }
+    .product-name { font-size:calc(16px * var(--font-scale, 1)); }
     .bt-card { flex-direction: column; }
-    .bt-level { width: 100%; padding: 10px; }
+    .bt-level { width: 100%; padding:calc(10px * var(--pad-scale, 1)); font-size:calc(15px * var(--font-scale, 1)); }
+    .bt-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .bt-project { font-size:calc(16px * var(--font-scale, 1)); }
     .training-card { flex-direction: column; align-items: flex-start; }
     .training-card > div { width: 100% !important; }
-    .trend-card { padding: 16px; }
-    .trend-title { font-size: 15px; }
-    .trend-body { font-size: 13px; }
+    .training-title { font-size:calc(15px * var(--font-scale, 1)); }
+    .trend-card { padding:calc(16px * var(--pad-scale, 1)); }
+    .trend-title { font-size:calc(18px * var(--font-scale, 1)); }
+    .trend-body { font-size:calc(14px * var(--font-scale, 1)); }
   }
   @media (max-width: 480px) {
-    .hero-banner { height: 280px; }
+    .hero-banner { height: 260px; }
     :root {
-      --title-font-size: 36px !important;
+      --title-font-size:calc(38px * var(--font-scale, 1)) !important;
       --logo-height: 20px;
     }
-    .section-num { width: 32px; height: 32px; font-size: 14px; }
+    .section-num { min-width: 36px; height: 36px; font-size:calc(16px * var(--font-scale, 1)); }
   }
-
 </style>
+</head>
 <body>
   <div class="container">
   <!-- 头图 -->
@@ -227,25 +366,25 @@
     <div class="product-card biz-card" style="margin-bottom:16px;">
       <div class="product-biz-tag">公有云 - AI</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+        <div style="background:#f8fbff; border-radius:10px; padding:14px 16px; border:1px solid #d6e4f7;">
           <div class="product-name">Agent Portal：智能体统一门户</div>
           <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
           <a class="product-link" href="https://meeting.tencent.com/crm/KDOGEwr754" target="_blank">https://meeting.tencent.com/crm/KDOGEwr754</a>
           <div><span class="product-pw">密码：8FD8</span></div>
         </div>
-        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+        <div style="background:#f8fbff; border-radius:10px; padding:14px 16px; border:1px solid #d6e4f7;">
           <div class="product-name">Token hub</div>
           <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
           <a class="product-link" href="https://meeting.tencent.com/crm/2VjE6gDx14" target="_blank">https://meeting.tencent.com/crm/2VjE6gDx14</a>
           <div><span class="product-pw">密码：HEMS</span></div>
         </div>
-        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+        <div style="background:#f8fbff; border-radius:10px; padding:14px 16px; border:1px solid #d6e4f7;">
           <div class="product-name">Workbuddy &amp; Codebuddy</div>
           <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
           <a class="product-link" href="https://meeting.tencent.com/crm/l5w3MGyD57" target="_blank">https://meeting.tencent.com/crm/l5w3MGyD57</a>
           <div><span class="product-pw">密码：PW4T</span></div>
         </div>
-        <div style="background:#fff; border-radius:10px; padding:16px 18px; border:1px solid #d6e4f7;">
+        <div style="background:#f8fbff; border-radius:10px; padding:14px 16px; border:1px solid #d6e4f7;">
           <div class="product-name">Databuddy</div>
           <div class="product-tags"><span class="tag">AI Agent快速部署</span><span class="tag">轻量切入</span></div>
           <a class="product-link" href="https://meeting.tencent.com/crm/2qkPQzVZ6a" target="_blank">https://meeting.tencent.com/crm/2qkPQzVZ6a</a>
@@ -299,17 +438,21 @@
       <div class="bt-card">
         <div class="bt-level lv-1">定点_千万级</div>
         <div class="bt-body">
-          <div class="bt-project">2026年-比亚迪线上欧洲智驾云项目</div>
+          <div class="bt-header">
+            <div class="bt-project">2026年-比亚迪线上欧洲智驾云项目</div>
+            <div class="bt-meaning">🎯 海外智驾项目首单</div>
+          </div>
           <div class="bt-meta"><span>方案：<span class="val">自主-公有云-智驾云</span></span></div>
-          <div class="bt-meaning">🎯 海外智驾项目首单</div>
         </div>
       </div>
       <div class="bt-card">
         <div class="bt-level lv-2">定点_百万级</div>
         <div class="bt-body">
-          <div class="bt-project">魏桥汽车研究院车上智能体</div>
+          <div class="bt-header">
+            <div class="bt-project">魏桥汽车研究院车上智能体</div>
+            <div class="bt-meaning">🎯 API Agent方案扩展</div>
+          </div>
           <div class="bt-meta"><span>方案：<span class="val">自主-座舱-大模型</span></span></div>
-          <div class="bt-meaning">🎯 API Agent方案扩展</div>
         </div>
       </div>
     </div>
@@ -331,8 +474,8 @@
           <div class="training-title" style="flex:1;">AI原子能力-语音asr/tts和智创多模态能力产品培训</div>
           <div class="training-audience" style="flex-shrink:0;">架构师必修</div>
         </div>
-        <div style="font-size:13px; color:#444; line-height:1.7; padding-left:42px;">📌 培训焦点：语音技术新功能和案例介绍；智创产品矩阵、第三方合作产品售卖指南</div>
-        <div style="font-size:12px; color:#888; padding-left:42px;">🏫 培训团队：云产品三部/应用产品一中心</div>
+        <div class="training-focus" style="padding-left:42px;">📌 培训焦点：语音技术新功能和案例介绍；智创产品矩阵、第三方合作产品售卖指南</div>
+        <div class="training-team-info" style="padding-left:42px;">🏫 培训团队：云产品三部/应用产品一中心</div>
       </div>
     </div>
 
@@ -342,19 +485,19 @@
         <div class="training-title" style="flex:none; width:28%;">腾讯会议2026年新报价政策，WorkBuddy+腾讯会议</div>
         <div class="training-team" style="width:22%;">腾讯会议产品部</div>
         <div class="training-audience">商务必修</div>
-        <div style="font-size:12px; color:#666; flex:1;">腾会最新报价政策、与WorkBuddy融合功能、广汽案例</div>
+        <div class="training-desc" style="color:#666; flex:1;">腾会最新报价政策、与WorkBuddy融合功能、广汽案例</div>
       </div>
       <div class="training-card">
         <div class="training-title" style="flex:none; width:28%;">ADP 新规划介绍</div>
         <div class="training-team" style="width:22%;">云产品三部</div>
         <div class="training-audience">商务/架构师必修</div>
-        <div style="font-size:12px; color:#666; flex:1;">ADP最新升级亮点与激励政策，出行案例分享</div>
+        <div class="training-desc" style="color:#666; flex:1;">ADP最新升级亮点与激励政策，出行案例分享</div>
       </div>
       <div class="training-card">
         <div class="training-title" style="flex:none; width:28%;">DataBuddy培训</div>
         <div class="training-team" style="width:22%;">云产品二部</div>
         <div class="training-audience">所有铁三角必修</div>
-        <div style="font-size:12px; color:#666; flex:1;">AI时代DataBuddy核心亮点与差异化优势</div>
+        <div class="training-desc" style="color:#666; flex:1;">AI时代DataBuddy核心亮点与差异化优势</div>
       </div>
     </div>
   </div>
@@ -415,7 +558,7 @@
 
     <div class="trend-card">
       <div class="trend-title">🚗 比亚迪全民智驾 2.0 正式落地，行业首创城市NOA安全兜底</div>
-      <div class="trend-body">2026年5月28日，比亚迪在深圳"敢为"智能化战略发布会推出全民智驾2.0，搭配国内首款量产4nm车规智驾芯片璇玑A3，从价格、安全、技术三大维度推动高阶城市领航全面普惠。全民智驾2.0打破高端智驾溢价壁垒，全系车型均可选装天神之眼B激光智驾包，定价12000元，7万级海鸥等入门车型同步适配，智驾功能终身免费无订阅费。系统搭载无图城市NOA、全场景记忆泊车，依托璇玑A3芯片提供2100TOPS整车算力，自研物理AI大模型预判道路风险，复杂城市路口通行更稳健。行业首创城市领航一年安全兜底政策：新车主提车、老车主OTA升级天神之眼5.0后，合规使用城市NOA引发有责事故，比亚迪全额赔付车辆、第三方财产与人伤损失，赔付无上限且不影响车主次年车险保费。叠加此前智能泊车兜底，比亚迪实现泊车、城市领航双安全保障，大幅打消用户使用顾虑。</div>
+      <div class="trend-body">2026年5月28日，比亚迪在深圳"敢为"智能化战略发布会推出全民智驾2.0，搭配国内首款量产4nm车规智驾芯片鵀玑A3，从价格、安全、技术三大维度推动高阶城市领航全面普惠。全民智驾2.0打破高端智驾溢价壁垒，全系车型均可选装天神之眼B激光智驾包，定价12000元，7万级海鸥等入门车型同步适配，智驾功能终身免费无订阅费。系统搭载无图城市NOA、全场景记忆泊车，依托鵀玑A3芯片提供2100TOPS整车算力，自研物理AI大模型预判道路风险，复杂城市路口通行更稳健。行业首创城市领航一年安全兜底政策：新车主提车、老车主OTA升级天神之眼5.0后，合规使用城市NOA引发有责事故，比亚迪全额赔付车辆、第三方财产与人伤损失，赔付无上限且不影响车主次年车险保费。叠加此前智能泊车兜底，比亚迪实现泊车、城市领航双安全保障，大幅打消用户使用顾虑。</div>
       <div class="trend-tags">
         <span class="trend-tag">智能驾驶云和图方案</span>
         <span class="trend-tag green">推进智驾平权的车企</span>
@@ -446,9 +589,311 @@
 </div>
 
 
+    <!-- ===== 调整面板 ===== -->
+  <button id="toggle-adjust" onclick="adj_toggle()">⚙️ 调整面板</button>
+  <div id="adj-panel" style="display:none; position:fixed; top:60px; right:16px; width:320px; max-height:85vh; overflow-y:auto; background:rgba(15,23,42,0.96); color:#e2e8f0; border-radius:14px; padding:16px; z-index:99999; font-family:sans-serif; font-size:13px; box-shadow:0 12px 40px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.12);">
+    <div style="font-size:15px; color:#38bdf8; margin-bottom:2px;">&#x1f3a8; 全局样式调整</div>
+    <div style="font-size:11px; color:#64748b; margin-bottom:12px;">拖动滑块实时调整，满意后复制 CSS</div>
 
+    <!-- 全局字号 -->
+    <div style="margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:12px; color:#94a3b8; margin-bottom:6px; font-weight:600;">&#x1f524; 全局字号系数</div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">字号缩放</label>
+        <input type="range" min="80" max="150" value="100" id="r-font-scale" oninput="adj_update('--font-scale', this.value/100, 'v-font-scale', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-font-scale" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">1.00x</span>
+      </div>
+    </div>
 
-</body>
-</html>
+    <!-- 间距系数 -->
+    <div style="margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:12px; color:#94a3b8; margin-bottom:6px; font-weight:600;">&#x1f4d0; 间距系数</div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">板块间距</label>
+        <input type="range" min="50" max="200" value="100" id="r-gap-section" oninput="adj_update('--gap-section', this.value/100, 'v-gap-section', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-gap-section" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">1.00x</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">卡片间距</label>
+        <input type="range" min="50" max="200" value="100" id="r-gap-card" oninput="adj_update('--gap-card', this.value/100, 'v-gap-card', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-gap-card" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">1.00x</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">内边距</label>
+        <input type="range" min="50" max="200" value="100" id="r-pad-scale" oninput="adj_update('--pad-scale', this.value/100, 'v-pad-scale', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-pad-scale" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">1.00x</span>
+      </div>
+    </div>
+
+    <!-- 头图 -->
+    <div style="margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:12px; color:#94a3b8; margin-bottom:6px; font-weight:600;">&#x1f5bc;&#xfe0f; 头图</div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">头图高度</label>
+        <input type="range" min="250" max="600" value="420" id="r-hero-h" oninput="adj_update('--hero-h', this.value+'px', 'v-hero-h', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-hero-h" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">420px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">Logo上距</label>
+        <input type="range" min="0" max="100" value="28" id="r-logo-top" oninput="adj_update('--logo-top', this.value+'px', 'v-logo-top', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-logo-top" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">28px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">Logo左距</label>
+        <input type="range" min="0" max="200" value="59" id="r-logo-left" oninput="adj_update('--logo-left', this.value+'px', 'v-logo-left', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-logo-left" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">59px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">Logo高度</label>
+        <input type="range" min="10" max="80" value="28" id="r-logo-height" oninput="adj_update('--logo-height', this.value+'px', 'v-logo-height', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-logo-height" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">28px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">标题上距</label>
+        <input type="range" min="40" max="200" value="91" id="r-title-top" oninput="adj_update('--title-top', this.value+'px', 'v-title-top', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-title-top" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">89px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">标题左距</label>
+        <input type="range" min="0" max="200" value="48" id="r-title-left" oninput="adj_update('--title-left', this.value+'px', 'v-title-left', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-title-left" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">48px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">标题字号</label>
+        <input type="range" min="40" max="140" value="94" id="r-title-font-size" oninput="adj_update('--title-font-size', this.value+'px', 'v-title-font-size', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-title-font-size" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">94px</span>
+      </div>
+      <!-- 笔刷和期号调整 -->
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">笔刷字号</label>
+        <input type="range" min="16" max="60" value="36" id="r-brush-font-size" oninput="adj_update('--brush-font-size', this.value+'px', 'v-brush-font-size', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-brush-font-size" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">36px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">期号字号</label>
+        <input type="range" min="10" max="40" value="15" id="r-badge-font-size" oninput="adj_update('--badge-font-size', this.value+'px', 'v-badge-font-size', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-badge-font-size" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">15px</span>
+      </div>
+      <!-- 插画调整 -->
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">插画右距</label>
+        <input type="range" min="-100" max="300" value="38" id="r-illus-right" oninput="adj_update('--illus-right', this.value+'px', 'v-illus-right', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-illus-right" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">38px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">插画下距</label>
+        <input type="range" min="-50" max="200" value="25" id="r-illus-bottom" oninput="adj_update('--illus-bottom', this.value+'px', 'v-illus-bottom', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-illus-bottom" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">25px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">插画高度</label>
+        <input type="range" min="100" max="500" value="293" id="r-illus-height" oninput="adj_update('--illus-height', this.value+'px', 'v-illus-height', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-illus-height" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">293px</span>
+      </div>
+      <!-- 车调整 -->
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">车左距</label>
+        <input type="range" min="0" max="800" value="255" id="r-car-left" oninput="adj_update('--car-left', this.value+'px', 'v-car-left', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-car-left" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">255px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">车下距</label>
+        <input type="range" min="-50" max="200" value="22" id="r-car-bottom" oninput="adj_update('--car-bottom', this.value+'px', 'v-car-bottom', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-car-bottom" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">22px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">车高度</label>
+        <input type="range" min="30" max="300" value="88" id="r-car-height" oninput="adj_update('--car-height', this.value+'px', 'v-car-height', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-car-height" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">88px</span>
+      </div>
+    </div>
+
+    <!-- 培训 -->
+    <div style="margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:12px; color:#94a3b8; margin-bottom:6px; font-weight:600;">📚 培训</div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">焦点字号</label>
+        <input type="range" min="10" max="20" value="14" id="r-training-focus" oninput="adj_update('--training-focus-size', this.value+'px', 'v-training-focus', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-training-focus" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">14px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">团队字号</label>
+        <input type="range" min="10" max="20" value="17" id="r-training-team" oninput="adj_update('--training-team-size', this.value+'px', 'v-training-team', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-training-team" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">17px</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;">
+        <label style="width:90px; font-size:11.5px; color:#cbd5e1; text-align:right;">描述字号</label>
+        <input type="range" min="10" max="20" value="12" id="r-training-desc" oninput="adj_update('--training-desc-size', this.value+'px', 'v-training-desc', this)" style="flex:1; accent-color:#38bdf8;">
+        <span id="v-training-desc" style="width:48px; text-align:right; font-size:11px; color:#7dd3fc; font-family:monospace;">12px</span>
+      </div>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div>
+      <button onclick="adj_copyCSS()" style="padding:5px 12px; background:rgba(56,189,248,0.15); color:#7dd3fc; border:1px solid rgba(56,189,248,0.3); border-radius:8px; cursor:pointer; font-size:12px; margin-right:6px;">&#x1f4cb; 复制CSS</button>
+      <button onclick="adj_reset()" style="padding:5px 12px; background:rgba(56,189,248,0.15); color:#7dd3fc; border:1px solid rgba(56,189,248,0.3); border-radius:8px; cursor:pointer; font-size:12px; margin-right:6px;">&#x1f504; 重置</button>
+      <button onclick="adj_toggle()" style="padding:5px 12px; background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); border-radius:8px; cursor:pointer; font-size:12px; float:right;">&#x2705; 完成</button>
+    </div>
+  </div>
+
+  <script>
+  /* 调整面板 JS —— 纯 ES5，兼容所有浏览器 */
+  function adj_toggle() {
+    var p = document.getElementById('adj-panel');
+    var btn = document.getElementById('toggle-adjust');
+    if (!p || !btn) { alert('ERROR: 找不到面板元素'); return; }
+    if (p.style.display === 'block') {
+      p.style.display = 'none';
+      btn.innerHTML = '&#x2699;&#xfe0f; 调整面板';
+    } else {
+      p.style.display = 'block';
+      btn.innerHTML = '&#x2716;&#xfe0f; 收起面板';
+    }
+  }
+
+  function adj_update(varName, value, spanId, slider) {
+    document.documentElement.style.setProperty(varName, value);
+    var span = document.getElementById(spanId);
+    if (span) {
+      if (varName.indexOf('scale') !== -1) {
+        span.innerHTML = (parseFloat(value)).toFixed(2) + 'x';
+      } else {
+        span.innerHTML = value;
+      }
+    }
+  }
+
+  function adj_reset() {
+    var defaults = {
+      '--font-scale': '1.27',
+      '--gap-section': '0.5',
+      '--gap-card': '1.3',
+      '--pad-scale': '0.58',
+      '--hero-h': '413px',
+      '--logo-top': '24px',
+      '--logo-left': '50px',
+      '--logo-height': '28px',
+      '--title-top': '91px',
+      '--title-left': '48px',
+      '--title-font-size': '96px',
+      '--brush-font-size': '36px',
+      '--badge-font-size': '15px',
+      '--illus-right': '13px',
+      '--illus-bottom': '10px',
+      '--illus-height': '302px',
+      '--car-left': '255px',
+      '--car-bottom': '22px',
+      '--car-height': '88px',
+      '--training-focus-size': '18px',
+      '--training-team-size': '17px',
+      '--training-desc-size': '15px'
+    };
+    var keys = [];
+    for (var key in defaults) {
+      if (defaults.hasOwnProperty(key)) {
+        keys.push(key);
+      }
+    }
+    for (var i = 0; i < keys.length; i++) {
+      document.documentElement.style.setProperty(keys[i], defaults[keys[i]]);
+    }
+    /* 重置滑块 */
+    var ranges = document.querySelectorAll('#adj-panel input[type=range]');
+    var defaultVals = [121, 50, 130, 58, 413, 24, 50, 28, 91, 48, 96, 36, 15, 13, 10, 302, 255, 22, 88, 18, 17, 15];
+    for (var j = 0; j < ranges.length; j++) {
+      ranges[j].value = defaultVals[j];
+    }
+    /* 重置显示文字 */
+    var spanMap = {
+      'v-font-scale': '1.27x',
+      'v-gap-section': '0.50x',
+      'v-gap-card': '1.30x',
+      'v-pad-scale': '0.58x',
+      'v-hero-h': '413px',
+      'v-logo-top': '24px',
+      'v-logo-left': '50px',
+      'v-logo-height': '28px',
+      'v-title-top': '91px',
+      'v-title-left': '48px',
+      'v-title-font-size': '96px',
+      'v-brush-font-size': '36px',
+      'v-badge-font-size': '15px',
+      'v-illus-right': '13px',
+      'v-illus-bottom': '10px',
+      'v-illus-height': '302px',
+      'v-car-left': '255px',
+      'v-car-bottom': '22px',
+      'v-car-height': '88px',
+      'v-training-focus': '18px',
+      'v-training-team': '17px',
+      'v-training-desc': '15px'
+    };
+    for (var id in spanMap) {
+      if (spanMap.hasOwnProperty(id)) {
+        var sp = document.getElementById(id);
+        if (sp) sp.innerHTML = spanMap[id];
+      }
+    }
+  }
+
+  function adj_copyCSS() {
+    var vars = [
+      '--font-scale','--gap-section','--gap-card','--pad-scale','--hero-h',
+      '--logo-top','--logo-left','--logo-height',
+      '--title-top','--title-left','--title-font-size',
+      '--brush-font-size','--badge-font-size',
+      '--illus-right','--illus-bottom','--illus-height',
+      '--car-left','--car-bottom','--car-height',
+      '--training-focus-size','--training-team-size','--training-desc-size'
+    ];
+    var txt = ':root {\n';
+    for (var i = 0; i < vars.length; i++) {
+      var val = getComputedStyle(document.documentElement).getPropertyValue(vars[i]).trim();
+      if (val) {
+        txt = txt + '  ' + vars[i] + ': ' + val + ';\n';
+      }
+    }
+    txt = txt + '}';
+    /* 尝试使用 Clipboard API */
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(function() {
+        adj_copyOK();
+      }).catch(function() {
+        adj_fallbackCopy(txt);
+      });
+    } else {
+      adj_fallbackCopy(txt);
+    }
+  }
+
+  function adj_copyOK() {
+    var btns = document.querySelectorAll('#adj-panel button');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].innerHTML.indexOf('复制') !== -1) {
+        var orig = btns[i].innerHTML;
+        btns[i].innerHTML = '&#x2705; 已复制';
+        (function(b, o) {
+          setTimeout(function() { b.innerHTML = o; }, 1500);
+        })(btns[i], orig);
+        break;
+      }
+    }
+  }
+
+  function adj_fallbackCopy(txt) {
+    var ta = document.createElement('textarea');
+    ta.value = txt;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      adj_copyOK();
+    } catch(e) {
+      alert('复制失败，请手动复制 CSS');
+    }
+    document.body.removeChild(ta);
+  }
+  </script>
+
 </body>
 </html>
