@@ -169,6 +169,39 @@
   .footer { text-align:center; padding:22px; color:#aaa; font-size:13px; background:#f0f2f5; border-radius:0 0 16px 16px; }
 
 
+
+  /* ========== 响应式设计 ========== */
+  @media (max-width: 768px) {
+    .container { margin: 0; border-radius: 0; }
+    .hero-banner { height: 320px; }
+    :root {
+      --title-font-size: 48px !important;
+      --brush-padding-v: 30px;
+      --brush-padding-h: 20px;
+      --illus-height: 200px;
+      --car-height: 70px;
+    }
+    .section { padding: 24px 20px; }
+    .section-head h2 { font-size: 18px; }
+    .product-grid { grid-template-columns: 1fr; }
+    .product-card.biz-card > div { grid-template-columns: 1fr; }
+    .bt-card { flex-direction: column; }
+    .bt-level { width: 100%; padding: 10px; }
+    .training-card { flex-direction: column; align-items: flex-start; }
+    .training-card > div { width: 100% !important; }
+    .trend-card { padding: 16px; }
+    .trend-title { font-size: 15px; }
+    .trend-body { font-size: 13px; }
+  }
+  @media (max-width: 480px) {
+    .hero-banner { height: 280px; }
+    :root {
+      --title-font-size: 36px !important;
+      --logo-height: 20px;
+    }
+    .section-num { width: 32px; height: 32px; font-size: 14px; }
+  }
+
 </style>
 <body>
   <div class="container">
