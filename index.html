@@ -169,36 +169,6 @@
   .footer { text-align:center; padding:22px; color:#aaa; font-size:13px; background:#f0f2f5; border-radius:0 0 16px 16px; }
 
 
-  /* ========== 头图调整面板 ========== */
-  #ctrl-panel {
-    position: fixed; bottom: 16px; right: 16px;
-    width: 320px; max-height: 90vh; overflow-y: auto;
-    background: rgba(15,23,42,0.95); color: #e2e8f0; display: none;
-    border-radius: 12px; padding: 16px; z-index: 9999;
-    font-family: 'PingFang SC', sans-serif; font-size: 13px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  #ctrl-panel h3 { margin: 0 0 12px; font-size: 15px; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
-  .ctrl-group { margin-bottom: 14px; }
-  .ctrl-group-title { font-size: 12px; color: #94a3b8; margin-bottom: 6px; font-weight: 600; }
-  .ctrl-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-  .ctrl-row label { width: 80px; font-size: 12px; color: #cbd5e1; flex-shrink: 0; }
-  .ctrl-row input[type=range] { flex: 1; accent-color: #38bdf8; }
-  .ctrl-row .val { width: 44px; text-align: right; font-size: 12px; color: #7dd3fc; font-family: monospace; }
-  #ctrl-panel::-webkit-scrollbar { width: 4px; }
-  #ctrl-panel::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
-  .ctrl-btn {
-    display: inline-block; padding: 5px 12px; background: #1e293b; color: #e2e8f0;
-    border: 1px solid #334155; border-radius: 6px; cursor: pointer; font-size: 12px;
-    margin-right: 6px; margin-top: 4px;
-  }
-  .ctrl-btn:hover { background: #334155; }
-  #toggle-ctrl { position: fixed; bottom: 16px; right: 344px; z-index: 9998;
-    background: rgba(15,23,42,0.9); color: #e2e8f0; border: 1px solid #334155;
-    border-radius: 8px; padding: 8px 12px; cursor: pointer; font-size: 13px;
-  }
-  
 </style>
 <body>
   <div class="container">
@@ -442,95 +412,10 @@
   <div class="footer">出行进行时——热门售卖速报 &nbsp;|&nbsp; 第202605期 &nbsp;|&nbsp; 内部资料</div>
 </div>
 
-  <button id="toggle-ctrl" onclick="document.getElementById('ctrl-panel').style.display = document.getElementById('ctrl-panel').style.display === 'none' ? 'block' : 'none'">&#x1f39b;&#xfe0f; 调整面板</button>
-  <div id="ctrl-panel">
-    <h3>&#x2699;&#xfe0f; 头图元素调整</h3>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1f524; Logo</div>
-      <div class="ctrl-row"><label>上距</label><input type="range" min="0" max="100" value="28" oninput="updateCSS('--logo-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">28px</span></div>
-      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="59" oninput="updateCSS('--logo-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">59px</span></div>
-      <div class="ctrl-row"><label>高度</label><input type="range" min="10" max="80" value="28" oninput="updateCSS('--logo-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">28px</span></div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1f3af; 主标题</div>
-      <div class="ctrl-row"><label>上距</label><input type="range" min="0" max="200" value="89" oninput="updateCSS('--title-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">89px</span></div>
-      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="48" oninput="updateCSS('--title-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">48px</span></div>
-      <div class="ctrl-row"><label>字号</label><input type="range" min="40" max="140" value="94" oninput="updateCSS('--title-font-size',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">94px</span></div>
-      <div class="ctrl-row"><label>字间距</label><input type="range" min="0" max="20" value="2" oninput="updateCSS('--title-letter-spacing',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">2px</span></div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1fac6; 笔触标签</div>
-      <div class="ctrl-row"><label>上距</label><input type="range" min="100" max="350" value="184" oninput="updateCSS('--brush-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">184px</span></div>
-      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="27" oninput="updateCSS('--brush-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">27px</span></div>
-      <div class="ctrl-row"><label>纵向内边距</label><input type="range" min="20" max="120" value="62" oninput="updateCSS('--brush-padding-v',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">62px</span></div>
-      <div class="ctrl-row"><label>横向内边距</label><input type="range" min="20" max="120" value="34" oninput="updateCSS('--brush-padding-h',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">34px</span></div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1f4e6; 期数徽章</div>
-      <div class="ctrl-row"><label>上距</label><input type="range" min="200" max="450" value="308" oninput="updateCSS('--badge-top',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">308px</span></div>
-      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="200" value="43" oninput="updateCSS('--badge-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">43px</span></div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1f3a8; 科技插画</div>
-      <div class="ctrl-row"><label>右距</label><input type="range" min="0" max="200" value="38" oninput="updateCSS('--illus-right',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">38px</span></div>
-      <div class="ctrl-row"><label>下距</label><input type="range" min="-50" max="150" value="25" oninput="updateCSS('--illus-bottom',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">25px</span></div>
-      <div class="ctrl-row"><label>高度</label><input type="range" min="100" max="450" value="293" oninput="updateCSS('--illus-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">293px</span></div>
-    </div>
-    <div class="ctrl-group">
-      <div class="ctrl-group-title">&#x1f697; 汽车图片</div>
-      <div class="ctrl-row"><label>左距</label><input type="range" min="0" max="800" value="290" oninput="updateCSS('--car-left',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">290px</span></div>
-      <div class="ctrl-row"><label>下距</label><input type="range" min="-50" max="150" value="46" oninput="updateCSS('--car-bottom',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">46px</span></div>
-      <div class="ctrl-row"><label>高度</label><input type="range" min="100" max="450" value="100" oninput="updateCSS('--car-height',this.value+'px');this.nextElementSibling.textContent=this.value+'px'"><span class="val">100px</span></div>
-    </div>
-    <hr style="border:none;border-top:1px solid #334155;margin:12px 0;">
-    <span class="ctrl-btn" onclick="copyCSS()">&#x1f4cb; 复制 CSS</span>
-    <span class="ctrl-btn" onclick="resetCSS()">&#x1f504; 重置</span>
-  </div>
-<script>
-function updateCSS(varName, val) {
-  document.documentElement.style.setProperty(varName, val);
-}
-function resetCSS() {
-  const defaults = {
-    '--logo-top':'28px','--logo-left':'59px','--logo-height':'28px',
-    '--title-top':'89px','--title-left':'48px','--title-font-size':'94px','--title-letter-spacing':'2px',
-    '--brush-top':'184px','--brush-left':'27px','--brush-padding-v':'62px','--brush-padding-h':'34px',
-    '--badge-top':'308px','--badge-left':'43px',
-    '--illus-right':'38px','--illus-bottom':'25px','--illus-height':'293px',
-    '--car-left':'290px','--car-bottom':'46px','--car-height':'100px'
-  };
-  for (const [k,v] of Object.entries(defaults)) {
-    document.documentElement.style.setProperty(k, v);
-  }
-  document.querySelectorAll('#ctrl-panel input[type=range]').forEach(s => {
-    const varName = s.getAttribute('oninput').match(/'([^']+)'/)[1];
-    s.value = parseInt(defaults[varName]);
-    s.nextElementSibling.textContent = defaults[varName];
-  });
-}
-function copyCSS() {
-  const vars = [
-    '--logo-top','--logo-left','--logo-height',
-    '--title-top','--title-left','--title-font-size','--title-letter-spacing',
-    '--brush-top','--brush-left','--brush-padding-v','--brush-padding-h',
-    '--badge-top','--badge-left',
-    '--illus-right','--illus-bottom','--illus-height',
-    '--car-left','--car-bottom','--car-height'
-  ];
-  let txt = ':root {
-';
-  vars.forEach(v => {
-    const val = getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    if (val) txt += '  ' + v + ': ' + val + ';
-';
-  });
-  txt += '}';
-  navigator.clipboard.writeText(txt).then(() => {
-    const btn = event.target;
-    btn.textContent = '✅ 已复制';
-    setTimeout(() => btn.textContent = '📋 复制 CSS', 1500);
-  });
-}
-</script>
+
+
+
+</body>
+</html>
 </body>
 </html>
